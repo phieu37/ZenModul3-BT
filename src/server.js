@@ -2,11 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const userRoutes = require('./routes/v1/userRoutes'); 
 const API_v1 = require('./routes/v1');  // /v1 ngam hieu vao index.js
-const errorHandle = require('./middleware/errorHandler')
+const errorHandle = require('./middleware/errorHandler');
+const db = require('./configs/mongodb');
 
 const app = express();
 const port = 3000;
 
+// Connect to DB
+db.connect()
 
 // middlewares 
 // app.use(express.json)

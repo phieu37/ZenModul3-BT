@@ -3,7 +3,7 @@ const CustomerController = require('../../controller/CustomerController');
 const router = express.Router();
 
 // /:id? get linh hoạt có hoặc không có tham số
-router.get('/:id?', CustomerController.get)
+router.get('/:id?', CustomerController.getAll)
 router.post('/', CustomerController.create)
 router.put('/:id', CustomerController.update)
 router.delete('/:id', CustomerController.delete)
