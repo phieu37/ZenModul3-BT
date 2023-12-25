@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   age: { type: Number, min: 18 },
-  phone: { type: String, required: true, unique: true }
+  phone: { type: String, required: true }
 })
 
 // Tạo model User từ schema

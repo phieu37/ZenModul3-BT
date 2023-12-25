@@ -14,15 +14,21 @@ class UserController {
       console.log('controller hứng từ model trả về cho client:');
       console.log(createUser)
       if (createUser) {
-        res.status(200).json({
-          createUser,
-          msg: 'Create successful'
+        res.status(201).json({
+          user: createUser,
+          msg: 'User create successful'
         })
       } else {
         throw new Error('Create fail')
       }
 
     } catch (error) {
+      // Xử lý lỗi trùng email
+      if (error.message === 'Email already exists') {
+        return res.status(400).json({ message: 'Email đã tồn tại' });
+      }
+
+      // Bắt các lỗi khác
       next(error)
     }
   }
@@ -78,7 +84,7 @@ class UserController {
       next(error)
     }
   }
-  
+
   get = async (req, res, next) => {
     try {
       // Gọi đến service

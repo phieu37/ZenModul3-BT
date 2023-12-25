@@ -5,8 +5,8 @@ class ProductController {
   create = async (req, res, next) => {
     try {
       // Lấy data gửi lên
-      const { productName, manufacturer, manufacturingYear, quantity, price } = req.body
-      const data = { productName, manufacturer, manufacturingYear, quantity, price }
+      const { productName, manufacturer, productionYear, quantity, price } = req.body
+      const data = { productName, manufacturer, productionYear, quantity, price }
 
       // Gửi data cho tầng service xử lý
       const result = await ProductService.create(data)
@@ -28,8 +28,8 @@ class ProductController {
     try {
       // Lấy id, data gửi lên
       const { id } = req.params
-      const { productName, manufacturer, manufacturingYear, quantity, price } = req.body
-      const data = { productName, manufacturer, manufacturingYear, quantity, price }
+      const { productName, manufacturer, productionYear, quantity, price } = req.body
+      const data = { productName, manufacturer, productionYear, quantity, price }
 
       // Gửi id, data cho tầng service xử lý
       const result = await ProductService.update(id, data)

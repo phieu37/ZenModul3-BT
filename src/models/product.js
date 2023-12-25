@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const productSchema = new mongoose.Schema({
   productName: { type: String, required: true },
   manufacturer: { type: String, required: true },
-  manufacturingYear: { type: Number, require: true },
+  productionYear: { type: Number, require: true },
   quantity: { type: Number, required: true },
   price: { type: Number, required: true }
 })

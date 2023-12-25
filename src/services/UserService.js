@@ -3,13 +3,19 @@ const User = require('../models/user')
 class UserService {
   create = async (data) => {
     try {
-      // gọi đến tầng model
+      // Kiểm tra trùng email
+      const existingUser = await User.findOne({ email: data.email });
+      if (existingUser) {
+        throw new Error('Email already exists');
+      }
+
+      // Nếu không trùng gọi đến tầng model tạo user
       const createUser = new User(data)
-      await createUser.save()
+      const result = await createUser.save()
 
       console.log('service hứng từ model và trả về cho controller:');
-      console.log(createUser);
-      return createUser
+      console.log(result);
+      return result
     } catch (error) {
       throw error
     }
@@ -49,7 +55,7 @@ class UserService {
       throw error
     }
   }
-  
+
   get = async () => {
     try {
       // gọi đến tầng model

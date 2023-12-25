@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const userRoutes = require('./routes/v1/userRoutes'); 
+require('dotenv').config();
 const API_v1 = require('./routes/v1');  // /v1 ngam hieu vao index.js
-const errorHandle = require('./middleware/errorHandler');
+const errorHandle = require('./middlewares/errorHandler');
 const db = require('./configs/mongodb');
 
 const app = express();
-const port = 3000;
+const port = process.env.APP_PORT || 3000;
 
 // Connect to DB
 db.connect()
